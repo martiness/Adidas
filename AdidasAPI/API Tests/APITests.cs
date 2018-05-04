@@ -1,13 +1,13 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.Net.Http;
-using System.Diagnostics;
 using NUnit.Framework;
+using AdidasAPI.API_Client;
 
 namespace AdidasAPI
 {
     public class APITests
     {
-        public const string apiPublicAddress = @"api/pages/landing?path=/";
+
         /// <summary>
         /// Checks for reponse time test.
         /// SLAs/requirements: Response time should be bellow 1s
@@ -16,20 +16,16 @@ namespace AdidasAPI
         public static void API_CheckForReponseTimeTest()
         {
             Client client = new Client();
-            //string apiAddress = apiAddress = @"api/pages/landing?path=/";
-
-            var stopwatch = new Stopwatch();
+            Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-
-            var response = client.GetAsync(apiPublicAddress);
+            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
             stopwatch.Stop();
 
-            var elapsedTime = new TimeSpan(stopwatch.ElapsedTicks);
-            var isLessThanSec = elapsedTime < TimeSpan.FromSeconds(1);
-            System.Diagnostics.Debug.WriteLine(isLessThanSec);
-            Assert.IsTrue(isLessThanSec,
-                "Expected API request response to be bellow 1 second, but it isn't");
+            bool isLessThanSec = Validation.IsLessThanASecond(stopwatch.ElapsedMilliseconds);
+            Assert.IsTrue(isLessThanSec, "Expected API request response to be bellow 1 second, but it isn't");
         }
+
+
 
         /// <summary>
         /// Checks for empty images test.
@@ -38,57 +34,90 @@ namespace AdidasAPI
         [Test]
         public static void API_CheckForEmptyImagesTest()
         {
-            //string apiAddress = apiAddress = @"api/pages/landing?path=/";
+            Client client = new Client();
+            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
+            string result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            QuickType.Welcome data = QuickType.Welcome.FromJson(result);
 
-            var client = new Client();
-            var response = client.GetAsync(apiPublicAddress);
-            var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            var data = QuickType.Welcome.FromJson(result);
+            
 
             foreach (var componentPresentation in data.ComponentPresentations)
             {
-                if (
-                    componentPresentation.Component?.ContentFields != null
+                if (componentPresentation.Component?.ContentFields != null
                     && componentPresentation.Component.ContentFields?.Items != null
                 )
                 {
-                    foreach (var item in componentPresentation.Component.ContentFields.Items)
+                    foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
                     {
-                        var images = item.BackgroundMedia;
-                        if (images != null)
+                        QuickType.BackgroundMedia backgroundMediaItems = item.BackgroundMedia;
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.AssetType))
                         {
-                            if (images.DesktopImage != null)
-                            {
-                                if (!string.IsNullOrEmpty(images.DesktopImage.Url))
-                                {
-                                    Assert.IsTrue(IsValidResponse(images.DesktopImage.Url),
-                                        "Expected Desкtop Images to be accessible (no 404/401s), but it isn't");
-                                }
-                            }
-
-                            if (images.MobileImage != null)
-                            {
-                                if (!string.IsNullOrEmpty(images.MobileImage.Url))
-                                {
-                                    Assert.IsTrue(IsValidResponse(images.MobileImage.Url),
-                                        "Expected Mobile Images to be accessible (no 404/401s), but it isn't");
-                                }
-                            }
-
-                            if (images.TabletImage != null)
-                            {
-                                if (!string.IsNullOrEmpty(images.TabletImage.Url))
-                                {
-                                    Assert.IsTrue(IsValidResponse(images.TabletImage.Url),
-                                        "Expected Responce Images to be accessible (no 404/401s), but it isn't");
-                                }
-                            }
+                            Validation.ValidateAssetType(backgroundMediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
                         }
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
+                        {
+                            string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
+                            Validation.ValidateResponse(desktopImageUrl, "Expected Desкtop Images to be accessible!");
+
+                            //TODO: Check For Content-Type: image/jpeg 
+                            //response.Result.Content.Headers.ContentType
+                            //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                        }
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
+                        {
+                            string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
+                            Validation.ValidateResponse(mobileImageUrl, "Expected Mobile Images to be accessible!");
+                        }
+
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
+                        {
+                            string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
+                            Validation.ValidateResponse(tabletImageUrl, "Expected Responce Images to be accessible!");
+                        }
+
+
+
+                        QuickType.BackgroundMedia mediaItems = item.MediaItems;
+
+                        if (!string.IsNullOrEmpty(mediaItems?.AssetType))
+                        {
+                            Validation.ValidateAssetType(mediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
+                        }
+
+                        if (!string.IsNullOrEmpty(mediaItems?.DesktopImage?.Url))
+                        {
+                            string desktopImageUrl = mediaItems.DesktopImage.Url;
+                            Validation.ValidateResponse(desktopImageUrl, "Expected Desкtop Images to be accessible!");
+
+                            //TODO: Check For Content-Type: image/jpeg 
+                            //response.Result.Content.Headers.ContentType
+                            //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                        }
+
+                        if (!string.IsNullOrEmpty(mediaItems?.MobileImage?.Url))
+                        {
+                            string mobileImageUrl = mediaItems.MobileImage.Url;
+                            Validation.ValidateResponse(mobileImageUrl, "Expected Mobile Images to be accessible!");
+                        }
+
+
+                        if (!string.IsNullOrEmpty(mediaItems?.TabletImage?.Url))
+                        {
+                            string tabletImageUrl = mediaItems.TabletImage.Url;
+                            Validation.ValidateResponse(tabletImageUrl, "Expected Responce Images to be accessible!");
+                        }
+
                     }
+
                 }
             }
         }
 
+        
         /// <summary>
         /// Checks for analytics data.
         /// SLAs/requirements: Every component has at least analytics data “analytics_name” in it 
@@ -99,7 +128,7 @@ namespace AdidasAPI
             //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
             var client = new Client();
-            var response = client.GetAsync(apiPublicAddress);
+            var response = client.GetAsync(Keywords.apiPublicAddress);
             var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             var data = QuickType.Welcome.FromJson(result);
 
@@ -141,16 +170,7 @@ namespace AdidasAPI
         /// <param name="address"> Image address </param>
         /// <returns></returns>
         #region Helpers
-        private static bool IsValidResponse(string address)
-        {
-            HttpResponseMessage message = new Client(address).GetAsync("").GetAwaiter().GetResult();
-            bool isSuccessfulResponse = (int)message.StatusCode != 401 && (int)message.StatusCode != 404;
 
-            System.Diagnostics.Debug.WriteLine(isSuccessfulResponse);
-            System.Diagnostics.Debug.WriteLine((int)message.StatusCode);
-
-            return isSuccessfulResponse;
-        }
 
         #endregion Helpers
     }

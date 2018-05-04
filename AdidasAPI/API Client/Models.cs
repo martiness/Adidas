@@ -7,6 +7,10 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
+    // Adidas API address: https://www.adidas.fi/api/pages/landing?path=/
+    // Quick Type IO: https://app.quicktype.io/ (JSON to C# object)
+    // JSON Beatifaier: https://codebeautify.org/jsonviewer
+
     public partial class Welcome
     {
         [JsonProperty("component_presentations")]

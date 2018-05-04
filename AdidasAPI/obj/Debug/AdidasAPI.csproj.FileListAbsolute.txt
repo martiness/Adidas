@@ -28,4 +28,3 @@ C:\Adidas\Adidas\AdidasAPI\bin\Debug\RazorEngine.xml
 C:\Adidas\Adidas\AdidasAPI\bin\Debug\System.Web.Razor.xml
 C:\Adidas\Adidas\AdidasAPI\obj\Debug\AdidasAPI.dll
 C:\Adidas\Adidas\AdidasAPI\obj\Debug\AdidasAPI.pdb
-C:\Adidas\Adidas\AdidasAPI\obj\Debug\AdidasAPI.csprojResolveAssemblyReference.cache

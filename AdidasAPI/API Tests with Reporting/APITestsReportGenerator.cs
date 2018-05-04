@@ -102,8 +102,7 @@ namespace AdidasAPI
 
                 foreach (var componentPresentation in data.ComponentPresentations)
                 {
-                    if (
-                        componentPresentation.Component?.ContentFields != null
+                    if (componentPresentation.Component?.ContentFields != null
                         && componentPresentation.Component.ContentFields?.Items != null
                     )
                     {
