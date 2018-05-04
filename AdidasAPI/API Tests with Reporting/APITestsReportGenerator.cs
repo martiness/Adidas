@@ -16,6 +16,7 @@ namespace AdidasAPI
         ExtentHtmlReporter htmlReporter;
         ExtentTest testReport;
         Client client;
+        public const string apiPublicAddress = @"api/pages/landing?path=/";
 
         [OneTimeSetUp]
         public void ReportGenerator()
@@ -44,18 +45,18 @@ namespace AdidasAPI
         /// SLAs/requirements: Response time should be bellow 1s
         /// </summary>
         [Test]
-        public void APIReponseTimeTestReportGenerator()
+        public void API_ReponseTimeTest_WithReporting()
         {
             try
             {
                 testReport = extent.CreateTest(TestContext.CurrentContext.Test.Name);
 
-                string apiAddress = apiAddress = @"api/pages/landing?path=/";
+                //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                var response = client.GetAsync(apiAddress);
+                var response = client.GetAsync(apiPublicAddress);
                 stopwatch.Stop();
 
                 var elapsedTime = new TimeSpan(stopwatch.ElapsedTicks);
@@ -87,15 +88,15 @@ namespace AdidasAPI
         /// SLAs/requirements: Images should be accessible (no 404/401s)
         /// </summary>
         [Test]
-        public void APIEmptyImagesTestReportGenerator()
+        public void API_EmptyImagesTest_WithReporting()
         {
             try
             {
                 testReport = extent.CreateTest(TestContext.CurrentContext.Test.Name);
-                string apiAddress = apiAddress = @"api/pages/landing?path=/";
+                //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
                 client = new Client();
-                var response = client.GetAsync(apiAddress);
+                var response = client.GetAsync(apiPublicAddress);
                 var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 var data = QuickType.Welcome.FromJson(result);
 
@@ -109,47 +110,61 @@ namespace AdidasAPI
                         foreach (var item in componentPresentation.Component.ContentFields.Items)
                         {
                             var images = item.BackgroundMedia;
-                            if (!string.IsNullOrEmpty(images.DesktopImage.Url))
+
+                            if (images.DesktopImage != null)
                             {
-                                try
+                                if (!string.IsNullOrEmpty(images.DesktopImage.Url))
                                 {
-                                    Assert.IsTrue(IsValidResponse(images.DesktopImage.Url));
-                                    testReport.Pass("Desktop Images are accessible");
-                                }
-                                catch (AssertionException)
-                                {
-                                    testReport.Fail("Expected Desktop Images to be accessible (no 404/401s)");
-                                    throw;
-                                }
-                                
-                            }
-                            if (!string.IsNullOrEmpty(images.DesktopImage.Url))
-                            {
-                                try
-                                {
-                                    Assert.IsTrue(IsValidResponse(images.MobileImage.Url));
-                                    testReport.Pass("Mobile Images are accessible");
-                                }
-                                catch (AssertionException)
-                                {
-                                    testReport.Fail("Expected Mobile Images to be accessible (no 404/401s)");
-                                    throw;
+                                    try
+                                    {
+                                        Assert.IsTrue(IsValidResponse(images.DesktopImage.Url));
+                                        testReport.Pass("Desktop Images are accessible");
+                                    }
+                                    catch (AssertionException)
+                                    {
+                                        testReport.Fail("Expected Desktop Images to be accessible (no 404/401s)");
+                                        throw;
+                                    }
+
                                 }
                             }
-                            if (!string.IsNullOrEmpty(images.DesktopImage.Url))
+
+                            if (images.MobileImage != null)
                             {
-                                try
+                                if (!string.IsNullOrEmpty(images.MobileImage.Url))
                                 {
-                                    Assert.IsTrue(IsValidResponse(images.TabletImage.Url));
-                                    testReport.Pass("Responce Images are accessible");
+                                    try
+                                    {
+                                        Assert.IsTrue(IsValidResponse(images.MobileImage.Url));
+                                        testReport.Pass("Mobile Images are accessible");
+                                    }
+                                    catch (AssertionException)
+                                    {
+                                        testReport.Fail("Expected Mobile Images to be accessible (no 404/401s)");
+                                        throw;
+                                    }
                                 }
-                                catch (AssertionException)
-                                {
-                                    testReport.Fail("Expected Responce Images to be accessible (no 404/401s)");
-                                    throw;
-                                }
-                                
                             }
+
+                            if (images.TabletImage != null)
+                            {
+                                if (!string.IsNullOrEmpty(images.TabletImage.Url))
+                                {
+                                    try
+                                    {
+                                        Assert.IsTrue(IsValidResponse(images.TabletImage.Url));
+                                        testReport.Pass("Responce Images are accessible");
+                                    }
+                                    catch (AssertionException)
+                                    {
+                                        testReport.Fail("Expected Responce Images to be accessible (no 404/401s)");
+                                        throw;
+                                    }
+
+                                }
+                            }
+                            
+                            
                         }
                     }
                 }
@@ -166,15 +181,15 @@ namespace AdidasAPI
         /// SLAs/requirements: Every component has at least analytics data “analytics_name” in it 
         /// </summary>
         [Test]
-        public void APIAnalyticsDataReportGenerator()
+        public void API_AnalyticsData_WithReporting()
         {
             try
             {
                 testReport = extent.CreateTest(TestContext.CurrentContext.Test.Name);
-                string apiAddress = apiAddress = @"api/pages/landing?path=/";
+                //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
                 client = new Client();
-                var response = client.GetAsync(apiAddress);
+                var response = client.GetAsync(apiPublicAddress);
                 var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 var data = QuickType.Welcome.FromJson(result);
 
@@ -188,10 +203,22 @@ namespace AdidasAPI
                         foreach (var item in componentPresentation.Component.ContentFields.Items)
                         {
                             var suportingFields = item.SupportingFields;
-                            bool hasAnaliticsName = (!string.IsNullOrEmpty(suportingFields.SupportingFields.StandardMetadata?.AnalyticsName));
-                            Assert.IsTrue(hasAnaliticsName,
-                                "Expected component to have “analytics_name” in it, but it haven't!");
-                            System.Diagnostics.Debug.WriteLine(hasAnaliticsName);
+                            if (suportingFields != null)
+                            {
+                                if (suportingFields.SupportingFields != null)
+                                {
+                                    if (suportingFields.SupportingFields.StandardMetadata != null)
+                                    {
+                                        if (suportingFields.SupportingFields.StandardMetadata.AnalyticsName != null)
+                                        {
+                                            bool hasAnaliticsName = (!string.IsNullOrEmpty(suportingFields.SupportingFields.StandardMetadata.AnalyticsName));
+                                            Assert.IsTrue(hasAnaliticsName,
+                                                "Expected component to have “analytics_name” in it, but it haven't!");
+                                            System.Diagnostics.Debug.WriteLine(hasAnaliticsName);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -223,7 +250,12 @@ namespace AdidasAPI
         private bool IsValidResponse(string address)
         {
             HttpResponseMessage message = new Client(address).GetAsync("").GetAwaiter().GetResult();
-            bool isSuccessfulResponse = (int)message.StatusCode != 401 && (int)message.StatusCode != 404;
+
+            int errorMessageUnautorized = 401;
+            int errorMessageNotFound = 404;
+
+            bool isSuccessfulResponse = (int)message.StatusCode != errorMessageUnautorized 
+                                     && (int)message.StatusCode != errorMessageNotFound;
 
             System.Diagnostics.Debug.WriteLine(isSuccessfulResponse);
             System.Diagnostics.Debug.WriteLine((int)message.StatusCode);

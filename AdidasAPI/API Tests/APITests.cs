@@ -7,20 +7,21 @@ namespace AdidasAPI
 {
     public class APITests
     {
+        public const string apiPublicAddress = @"api/pages/landing?path=/";
         /// <summary>
         /// Checks for reponse time test.
         /// SLAs/requirements: Response time should be bellow 1s
         /// </summary>
         [Test]
-        public static void CheckForReponseTimeTest()
+        public static void API_CheckForReponseTimeTest()
         {
             Client client = new Client();
-            string apiAddress = apiAddress = @"api/pages/landing?path=/";
+            //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var response = client.GetAsync(apiAddress);
+            var response = client.GetAsync(apiPublicAddress);
             stopwatch.Stop();
 
             var elapsedTime = new TimeSpan(stopwatch.ElapsedTicks);
@@ -35,12 +36,12 @@ namespace AdidasAPI
         /// SLAs/requirements: Images should be accessible (no 404/401s)
         /// </summary>
         [Test]
-        public static void CheckForEmptyImagesTest()
+        public static void API_CheckForEmptyImagesTest()
         {
-            string apiAddress = apiAddress = @"api/pages/landing?path=/";
+            //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
             var client = new Client();
-            var response = client.GetAsync(apiAddress);
+            var response = client.GetAsync(apiPublicAddress);
             var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             var data = QuickType.Welcome.FromJson(result);
 
@@ -54,20 +55,34 @@ namespace AdidasAPI
                     foreach (var item in componentPresentation.Component.ContentFields.Items)
                     {
                         var images = item.BackgroundMedia;
-                        if (!string.IsNullOrEmpty(images.DesktopImage.Url))
+                        if (images != null)
                         {
-                            Assert.IsTrue(IsValidResponse(images.DesktopImage.Url),
-                                "Expected Desкtop Images to be accessible (no 404/401s), but it isn't");
-                        }
-                        if (!string.IsNullOrEmpty(images.DesktopImage.Url))
-                        {
-                            Assert.IsTrue(IsValidResponse(images.MobileImage.Url),
-                                "Expected Mobile Images to be accessible (no 404/401s), but it isn't");
-                        }
-                        if (!string.IsNullOrEmpty(images.DesktopImage.Url))
-                        {
-                            Assert.IsTrue(IsValidResponse(images.TabletImage.Url),
-                                "Expected Responce Images to be accessible (no 404/401s), but it isn't");
+                            if (images.DesktopImage != null)
+                            {
+                                if (!string.IsNullOrEmpty(images.DesktopImage.Url))
+                                {
+                                    Assert.IsTrue(IsValidResponse(images.DesktopImage.Url),
+                                        "Expected Desкtop Images to be accessible (no 404/401s), but it isn't");
+                                }
+                            }
+
+                            if (images.MobileImage != null)
+                            {
+                                if (!string.IsNullOrEmpty(images.MobileImage.Url))
+                                {
+                                    Assert.IsTrue(IsValidResponse(images.MobileImage.Url),
+                                        "Expected Mobile Images to be accessible (no 404/401s), but it isn't");
+                                }
+                            }
+
+                            if (images.TabletImage != null)
+                            {
+                                if (!string.IsNullOrEmpty(images.TabletImage.Url))
+                                {
+                                    Assert.IsTrue(IsValidResponse(images.TabletImage.Url),
+                                        "Expected Responce Images to be accessible (no 404/401s), but it isn't");
+                                }
+                            }
                         }
                     }
                 }
@@ -79,12 +94,12 @@ namespace AdidasAPI
         /// SLAs/requirements: Every component has at least analytics data “analytics_name” in it 
         /// </summary>
         [Test]
-        public static void CheckForAnalyticsData()
+        public static void API_CheckForAnalyticsData()
         {
-            string apiAddress = apiAddress = @"api/pages/landing?path=/";
+            //string apiAddress = apiAddress = @"api/pages/landing?path=/";
 
             var client = new Client();
-            var response = client.GetAsync(apiAddress);
+            var response = client.GetAsync(apiPublicAddress);
             var result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             var data = QuickType.Welcome.FromJson(result);
 
@@ -98,16 +113,28 @@ namespace AdidasAPI
                     foreach (var item in componentPresentation.Component.ContentFields.Items)
                     {
                         var suportingFields = item.SupportingFields;
-                        bool hasAnaliticsName = (!string.IsNullOrEmpty(suportingFields.SupportingFields.StandardMetadata?.AnalyticsName));
-                        Assert.IsTrue(hasAnaliticsName,
-                            "Expected component to have “analytics_name” in it, but it haven't!");
-                        System.Diagnostics.Debug.WriteLine(hasAnaliticsName);
+                        if (suportingFields != null)
+                        {
+                            if (suportingFields.SupportingFields != null)
+                            {
+                                if (suportingFields.SupportingFields.StandardMetadata != null)
+                                {
+                                    if (suportingFields.SupportingFields.StandardMetadata.AnalyticsName != null)
+                                    {
+                                        bool hasAnaliticsName = (!string.IsNullOrEmpty(suportingFields.SupportingFields.StandardMetadata.AnalyticsName));
+                                        Assert.IsTrue(hasAnaliticsName,
+                                            "Expected component to have “analytics_name” in it, but it haven't!");
+                                        System.Diagnostics.Debug.WriteLine(hasAnaliticsName);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
 
-        
+
         /// <summary>
         /// Checks for valid response, different from 401 and 404
         /// </summary>
