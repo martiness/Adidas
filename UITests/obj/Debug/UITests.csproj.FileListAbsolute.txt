@@ -29,3 +29,36 @@ C:\Adidas\Adidas\UITests\bin\Debug\System.Web.Razor.xml
 C:\Adidas\Adidas\UITests\bin\Debug\WebDriver.xml
 C:\Adidas\Adidas\UITests\obj\Debug\UITests.dll
 C:\Adidas\Adidas\UITests\obj\Debug\UITests.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\nunit.engine.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\nunit.engine.api.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\Mono.Cecil.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\UITests.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\UITests.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\ExtentReports.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Bson.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Driver.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\nunit.framework.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\RazorEngine.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\System.Web.Razor.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\WebDriver.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Bson.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Driver.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\nunit.framework.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\nunit.framework.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\RazorEngine.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\System.Web.Razor.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\bin\Debug\WebDriver.xml
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.csproj.CoreCompileInputs.cache
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.csproj.CopyComplete
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.dll
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.pdb

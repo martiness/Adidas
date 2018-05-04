@@ -44,7 +44,7 @@ namespace AdidasAPI
         /// Checks for reponse time test.
         /// SLAs/requirements: Response time should be bellow 1s
         /// </summary>
-        [Test]
+        //[Test]
         public void API_ReponseTimeTest_WithReporting()
         {
             try
@@ -87,7 +87,7 @@ namespace AdidasAPI
         /// Checks for empty images test.
         /// SLAs/requirements: Images should be accessible (no 404/401s)
         /// </summary>
-        [Test]
+        //[Test]
         public void API_EmptyImagesTest_WithReporting()
         {
             try
@@ -179,7 +179,7 @@ namespace AdidasAPI
         /// Checks for analytics data.
         /// SLAs/requirements: Every component has at least analytics data “analytics_name” in it 
         /// </summary>
-        [Test]
+        //[Test]
         public void API_AnalyticsData_WithReporting()
         {
             try

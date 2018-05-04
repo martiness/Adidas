@@ -1,0 +1,542 @@
+﻿{
+	"component_presentations": [
+		{
+			"component": {
+				"content_fields": {
+					"items": [
+						{
+							"title": "ATRIC",
+							"summary": "Engineered for any extreme. \n<br> You choose how to use it.",
+							"media_items": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-dt_tcm146-255386.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-dt_tcm146-255388.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-m_tcm146-255387.jpg"
+								},
+								"id": "tcm:146-255392"
+							},
+							"calls_to_action": [
+								{
+									"title": "EXPLORE ATRIC",
+									"cta_text": "EXPLORE ATRIC",
+									"external_link": "/atric",
+									"target": "default",
+									"id": "tcm:146-255389",
+									"supporting_fields": {
+										"supporting_fields": {
+											"standard_metadata": {
+												"analytics_name": "EXPLORE_ATRIC"
+											},
+											"metadata": {
+												"translationCampaign": "originals-ss18-atric-glass-cta",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								},
+								{
+									"title": "SHOP ATRIC",
+									"cta_text": "SHOP ATRIC",
+									"external_link": "/originals-atric",
+									"target": "default",
+									"id": "tcm:146-255390",
+									"supporting_fields": {
+										"supporting_fields": {
+											"standard_metadata": {
+												"analytics_name": "SHOP_ATRIC"
+											},
+											"metadata": {
+												"translationCampaign": "originals-ss18-atric-glass-cta",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								}
+							],
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-dt_tcm146-255386.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-dt_tcm146-255388.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/originals-ss18-atric-hp-mh-type-A-full-look-m_tcm146-255387.jpg"
+								},
+								"id": "tcm:146-255392"
+							},
+							"id": "tcm:146-255395",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"analytics_name": "MASTHEAD_ATRIC_FULL_LOOK",
+										"style_overrides": {
+											"display_styles": "display-style-white"
+										}
+									},
+									"metadata": {
+										"translationCampaign": "originals-ss18-atric-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						},
+						{
+							"title": "BUILT TO DEFY",
+							"summary": "PureBOOST Clima",
+							"calls_to_action": [
+								{
+									"title": "SHOP MEN'S",
+									"cta_text": "SHOP MEN'S",
+									"external_link": "/men-pure_boost",
+									"target": "default",
+									"id": "tcm:146-255247",
+									"supporting_fields": {
+										"supporting_fields": {
+											"standard_metadata": {
+												"analytics_name": "CTA_SHOP_MEN"
+											},
+											"metadata": {
+												"translationCampaign": "ss18-pureboost-clima-onsite-glass-ctas",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								},
+								{
+									"title": "SHOP WOMEN'S",
+									"cta_text": "SHOP WOMEN'S",
+									"external_link": "/women-pure_boost",
+									"target": "default",
+									"id": "tcm:146-255248",
+									"supporting_fields": {
+										"supporting_fields": {
+											"standard_metadata": {
+												"analytics_name": "CTA_SHOP_WOMEN"
+											},
+											"metadata": {
+												"translationCampaign": "ss18-pureboost-clima-onsite-glass-ctas",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								}
+							],
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/running-ss18-pureboost-clima-hp-mh-dw-desktop-1366x600_tcm146-255242.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/running-ss18-pureboost-clima-hp-mh-dw-mobile-640x546_tcm146-255243.jpg"
+								},
+								"id": "tcm:146-255245"
+							},
+							"id": "tcm:146-255249",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"created_for": "adidas Web",
+										"analytics_name": "MASTHEAD_PUREBOOST_CLIMA",
+										"style_overrides": {
+											"display_styles": "display-style-white"
+										},
+										"tags": "{\"tags\":[{\"value\":\"adidas\",\"uuid\":\"e8e973bf-757c-4d5f-8bb0-fb2998dc0365\",\"entity-types\":{\"entity-type\":[\"Brand\"]}},{\"value\":\"Running\",\"uuid\":\"922262c6-94b8-49ea-a62c-41c8a5766e09\",\"entity-types\":{\"entity-type\":[\"Sport\"]}},{\"value\":\"Performance\",\"uuid\":\"68e6fa16-da01-4473-9d46-dcbc0973e15a\",\"entity-types\":{\"entity-type\":[\"Sub Brand\"]}},{\"value\":\"2018 Spring Summer\",\"uuid\":\"c63a9bdc-449f-4a8a-9d13-efc7b3dcbfe5\",\"entity-types\":{\"entity-type\":[\"Season\"]}},{\"value\":\"2018\",\"uuid\":\"1d6f0b39-a53a-49e8-9ff8-721eb6d5968f\",\"entity-types\":{\"entity-type\":[\"Season Year\"]}},{\"value\":\"Unisex\",\"uuid\":\"ed6cf37a-86eb-463d-9536-9a975fc09362\",\"entity-types\":{\"entity-type\":[\"Gender\"]}},{\"value\":\"Adult\",\"uuid\":\"a03a7bc0-72fa-4cc2-96c8-9672834f610b\",\"entity-types\":{\"entity-type\":[\"Age Group\"]}}]}"
+									},
+									"metadata": {
+										"translationCampaign": "ss18-pureboost-clima-onsite-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						},
+						{
+							"title": "MASTER CONTROL",
+							"calls_to_action": [
+								{
+									"title": "SHOP NOW",
+									"cta_text": "SHOP NOW",
+									"external_link": "/predator",
+									"target": "default",
+									"id": "tcm:146-194313",
+									"supporting_fields": {
+										"supporting_fields": {
+											"metadata": {
+												"translationCampaign": "football-ss18-skystalker-glass-cta-type-a-plus",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								},
+								{
+									"title": "EXPLORE",
+									"cta_text": "EXPLORE",
+									"external_link": "/predator_18",
+									"target": "default",
+									"id": "tcm:146-193523",
+									"supporting_fields": {
+										"supporting_fields": {
+											"metadata": {
+												"translationCampaign": "football-skystalker-glass-ctas",
+												"translationContentOwner": "Tridion Brand"
+											}
+										}
+									}
+								}
+							],
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FB_SS18_DEADLYSTRIKE_Predator_HP_MH-Desktop-Pobga-PredatorStadium_new_tcm146-245145.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FB_SS18_DEADLYSTRIKE_Predator_HP_MH-Desktop-Pobga-PredatorStadium_tcm146-244500.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FB_SS18_FTW_DEADLYSTRIKE_HP-MH-Mobile_predatorS_tcm146-245144.jpg"
+								},
+								"id": "tcm:146-244943"
+							},
+							"id": "tcm:146-244961",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"analytics_name": "MASTHEAD-DEADLYSTRIKE",
+										"tags": "{\"tags\":[{\"entity-types\":{\"entity-type\":[\"Sport\"]},\"uuid\":\"1b4f196e-5c7b-4fe1-a502-c87b7052a081\",\"value\":\"Football\"},{\"entity-types\":{\"entity-type\":[\"Sub Brand\"]},\"uuid\":\"68e6fa16-da01-4473-9d46-dcbc0973e15a\",\"value\":\"Performance\"},{\"entity-types\":{\"entity-type\":[\"Brand\"]},\"uuid\":\"e8e973bf-757c-4d5f-8bb0-fb2998dc0365\",\"value\":\"adidas\"},{\"entity-types\":{\"entity-type\":[\"Season\"]},\"uuid\":\"c63a9bdc-449f-4a8a-9d13-efc7b3dcbfe5\",\"value\":\"2018 Spring Summer\"},{\"entity-types\":{\"entity-type\":[\"Season Year\"]},\"uuid\":\"1d6f0b39-a53a-49e8-9ff8-721eb6d5968f\",\"value\":\"2018\"},{\"entity-types\":{\"entity-type\":[\"Gender\"]},\"uuid\":\"e379c729-5870-4a4e-b095-5e32af11b14b\",\"value\":\"Male\"}]}"
+									}
+								}
+							}
+						}
+					]
+				},
+				"id": "tcm:146-233850",
+				"component_type": "Core Schema - Component List"
+			},
+			"template_metadata": {
+				"template": "MastheadLargeCarouselTextLeft",
+				"region": "1",
+				"component_type": "MastheadCarousel"
+			},
+			"order_on_page": 0
+		},
+		{
+			"component": {
+				"id": "tcm:146-173855",
+				"component_type": "Core Schema - Navigation"
+			},
+			"template_metadata": {
+				"template": "glass-mobile-navigation",
+				"region": "1",
+				"component_type": "MobileNavigation"
+			},
+			"order_on_page": 1
+		},
+		{
+			"component": {
+				"content_fields": {
+					"items": [
+						{
+							"title": "FEEL GOOD RUNNING",
+							"calls_to_action": {
+								"title": "SHOP RUNNING",
+								"cta_text": "SHOP RUNNING",
+								"external_link": "/adidas_by_stella_mccartney-running",
+								"summary": "SHOP RUNNING",
+								"target": "default",
+								"id": "tcm:146-236623",
+								"supporting_fields": {
+									"supporting_fields": {
+										"metadata": {
+											"translationCampaign": "SHOP RUNNING /adidas_by_stella_mccartney-running",
+											"translationContentOwner": "Tridion Brand"
+										}
+									}
+								}
+							},
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/aSMC_SS18_Run_KEY_01_FC_470x264_tcm146-236614.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/aSMC_SS18_Run_KEY_01_FC_470x264_tcm146-236614.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/aSMC_SS18_Run_KEY_01_FC_470x264_tcm146-236614.jpg"
+								},
+								"id": "tcm:146-236615"
+							},
+							"id": "tcm:146-236624",
+							"supporting_fields": {
+								"supporting_fields": {
+									"metadata": {
+										"translationCampaign": "asmc-ss18-hp-fc-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						},
+						{
+							"title": "Built to defy",
+							"calls_to_action": {
+								"title": "SHOP CLIMACHILL",
+								"cta_text": "SHOP CLIMACHILL",
+								"external_link": "/performance-climachill",
+								"target": "default",
+								"id": "tcm:146-254637",
+								"supporting_fields": {
+									"supporting_fields": {
+										"standard_metadata": {
+											"analytics_name": "SHOP-COLLECTION-CTA"
+										},
+										"metadata": {
+											"translationCampaign": "training-ss18-clima-q2-onsite-glass-cta",
+											"translationContentOwner": "Tridion Brand"
+										}
+									}
+								}
+							},
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/clima-hp-oldschool-fc_tcm146-257598.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/clima-hp-oldschool-fc_tcm146-257598.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/clima-hp-oldschool-fc_tcm146-257598.jpg"
+								},
+								"id": "tcm:146-257599"
+							},
+							"id": "tcm:146-257600",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"analytics_name": "FEATURE-CARD-TRAINING-CLIMA",
+										"tags": "{\"tags\":[{\"value\":\"Climachill\",\"uuid\":\"b81c6605-6c9c-40b2-95fb-8d190ce30ed6\",\"entity-types\":{\"entity-type\":[\"Technology Concept\"]}},{\"value\":\"Training\",\"uuid\":\"631c9deb-e494-4c09-a9ca-6d330d55d586\",\"entity-types\":{\"entity-type\":[\"Sport\"]}},{\"value\":\"Performance\",\"uuid\":\"68e6fa16-da01-4473-9d46-dcbc0973e15a\",\"entity-types\":{\"entity-type\":[\"Sub Brand\"]}},{\"value\":\"adidas\",\"uuid\":\"e8e973bf-757c-4d5f-8bb0-fb2998dc0365\",\"entity-types\":{\"entity-type\":[\"Brand\"]}},{\"value\":\"2018 Spring Summer\",\"uuid\":\"c63a9bdc-449f-4a8a-9d13-efc7b3dcbfe5\",\"entity-types\":{\"entity-type\":[\"Season\"]}},{\"value\":\"2018\",\"uuid\":\"1d6f0b39-a53a-49e8-9ff8-721eb6d5968f\",\"entity-types\":{\"entity-type\":[\"Season Year\"]}},{\"value\":\"Green\",\"uuid\":\"d33b2c59-5005-401b-b9aa-f080a798aae1\",\"entity-types\":{\"entity-type\":[\"Color\"]}},{\"value\":\"Blue\",\"uuid\":\"251bb7ea-24be-411a-909d-e6941bb3b18c\",\"entity-types\":{\"entity-type\":[\"Color\"]}},{\"value\":\"Unisex\",\"uuid\":\"ed6cf37a-86eb-463d-9536-9a975fc09362\",\"entity-types\":{\"entity-type\":[\"Gender\"]}},{\"value\":\"Adult\",\"uuid\":\"a03a7bc0-72fa-4cc2-96c8-9672834f610b\",\"entity-types\":{\"entity-type\":[\"Age Group\"]}},{\"value\":\"James Rodriguez\",\"uuid\":\"91ce8e8f-b4c6-4ac6-87a5-98a157cd01c0\",\"entity-types\":{\"entity-type\":[\"Person\"]}},{\"value\":\"Angelique Kerber\",\"uuid\":\"815c94bc-0bb0-474f-b268-fc28eb9bef42\",\"entity-types\":{\"entity-type\":[\"Person\"]}},{\"value\":\"Hot\",\"uuid\":\"fedf5eb2-dec5-46a5-a2a7-3fa363b8d638\",\"entity-types\":{\"entity-type\":[\"Weather\"]}}]}"
+									},
+									"metadata": {
+										"translationCampaign": "training-ss18-clima-q2-fc-xgen-old-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						},
+						{
+							"title": "MADE FOR MINDFUL ADVENTURES",
+							"calls_to_action": {
+								"title": "SHOP COLLECTION",
+								"cta_text": "SHOP COLLECTION",
+								"external_link": "/wanderlust?grid=true",
+								"target": "default",
+								"id": "tcm:146-240047",
+								"supporting_fields": {
+									"supporting_fields": {
+										"standard_metadata": {
+											"analytics_name": "SHOP-COLLECTION-CTA"
+										},
+										"metadata": {
+											"translationCampaign": "Shop Collection /wanderlust?grid=true",
+											"translationContentOwner": "Tridion Brand"
+										}
+									}
+								}
+							},
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/Wanderlust_SS18_HP_FC_19-23_April_DT_tcm146-240043.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/Wanderlust_SS18_HP_FC_19-23_April_DT_tcm146-240043.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/Wanderlust_SS18_HP_FC_19-23_April_DT_tcm146-240044.jpg"
+								},
+								"id": "tcm:146-240046"
+							},
+							"id": "tcm:146-240048",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"analytics_name": "training-wanderlust-ss18-hp-fc-mar",
+										"style_overrides": {
+											"display_styles": "display-style-white"
+										}
+									},
+									"metadata": {
+										"translationCampaign": "training-wanderlust-ss18-hp-fc-mar-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						},
+						{
+							"title": "HOLD COURT IN PARIS",
+							"media_items": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"id": "tcm:146-248473"
+							},
+							"calls_to_action": {
+								"title": "SHOP GARBINE'S COLLECTION",
+								"cta_text": "SHOP GARBINE'S COLLECTION",
+								"external_link": "/women-barricade-tennis",
+								"target": "default",
+								"id": "tcm:146-248543",
+								"supporting_fields": {
+									"supporting_fields": {
+										"standard_metadata": {
+											"analytics_name": "CTA-SHOP-GARBINE"
+										},
+										"metadata": {
+											"translationCampaign": "tennis-ss18-rg-glass-ctas",
+											"translationContentOwner": "Tridion Brand"
+										}
+									}
+								}
+							},
+							"background_media": {
+								"asset_type": "Image",
+								"desktop_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"tablet_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"mobile_image": {
+									"url": "https://assets.adidas.fi/image/upload/f_auto,q_auto,fl_lossy/enFI/Images/FtC_Double_Desktop_tcm146-248440.jpg"
+								},
+								"id": "tcm:146-248473"
+							},
+							"id": "tcm:146-248545",
+							"supporting_fields": {
+								"supporting_fields": {
+									"standard_metadata": {
+										"style_overrides": {
+											"display_styles": "display-style-white"
+										}
+									},
+									"metadata": {
+										"translationCampaign": "tennis-ss18-rg-onsite-glass",
+										"translationContentOwner": "Tridion Brand"
+									}
+								}
+							}
+						}
+					]
+				},
+				"id": "tcm:146-233851",
+				"component_type": "Core Schema - Component List"
+			},
+			"template_metadata": {
+				"template": "TeasersBlockTextCenter",
+				"region": "1",
+				"component_type": "TeasersBlock"
+			},
+			"order_on_page": 2
+		},
+		{
+			"component": {
+				"content_fields": {
+					"title": "BEST OF ADIDAS",
+					"app_id": "adidaswebfi",
+					"certona_zone_id": "home_rr",
+					"certona_recommendation_count": 16
+				},
+				"supporting_fields": {
+					"supporting_fields": {
+						"metadata": {
+							"translationCampaign": "certona-homepage",
+							"translationContentOwner": "Tridion Brand"
+						}
+					}
+				},
+				"id": "tcm:146-173637",
+				"component_type": "Core Schema - Certona"
+			},
+			"template_metadata": {
+				"template": "glass-recommendation-stack",
+				"region": "1",
+				"component_type": "Certona"
+			},
+			"order_on_page": 3
+		}
+	],
+	"regions": [
+		{
+			"id": "1",
+			"name": "Dummy Region"
+		}
+	],
+	"id": "tcm:146-172028-64",
+	"publication_path": "/enFI",
+	"title": "index",
+	"revision_date": "2018-02-26T09:56:48.000Z",
+	"version": 18,
+	"uri": "/enFI/dot-com/index.html",
+	"last_published_date": "2018-05-04T09:42:51.070Z",
+	"metadata": {
+		"template": "HomePage",
+		"metadata_tags": [
+			{
+				"tag_name": "description",
+				"tag_content": "Tervetuloa adidas verkkokauppaan. Löydät adidaksen kengät, vaatteet ja asusteet. Uudet mallistot: adidas Originals, juoksu, jalkapallo, treeni ja monet muut."
+			},
+			{
+				"tag_name": "title",
+				"tag_content": "adidas virallinen verkkosivusto | adidas Suomi"
+			},
+			{
+				"tag_name": "canonical",
+				"tag_content": "https://www.adidas.fi/"
+			},
+			{
+				"tag_name": "robots",
+				"tag_content": "noodp, noydir, index, follow, archive, noyaca"
+			},
+			{
+				"tag_name": "og:title",
+				"tag_content": "adidas virallinen verkkosivusto | adidas Suomi"
+			},
+			{
+				"tag_name": "og:description",
+				"tag_content": "Tervetuloa adidas verkkokauppaan. Löydät adidaksen kengät, vaatteet ja asusteet. Uudet mallistot: adidas Originals, juoksu, jalkapallo, treeni ja monet muut."
+			},
+			{
+				"tag_name": "og:url",
+				"tag_content": "https://www.adidas.fi"
+			},
+			{
+				"tag_name": "og:site_name",
+				"tag_content": "adidas Finland"
+			}
+		],
+		"og_image": null,
+		"analytics_data": {
+			"page_name": "HOME"
+		},
+		"h1_overwrite": null,
+		"h2_overwrite": null,
+		"h3_overwrite": null,
+		"page_category": null,
+		"seo_copy": null,
+		"seo_copy_read_more": null,
+		"title": "adidas virallinen verkkosivusto | adidas Suomi"
+	}
+}

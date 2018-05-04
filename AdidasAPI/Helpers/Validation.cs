@@ -13,7 +13,7 @@ namespace AdidasAPI.API_Client
             return isLessThanSec;
         }
 
-        public static void ValidateResponse(string address, string errorMessage)
+        public static void ValidateResponseCode(string address, string errorMessage)
         {
             HttpResponseMessage message = new Client(address).GetAsync("").GetAwaiter().GetResult();
 
@@ -23,7 +23,7 @@ namespace AdidasAPI.API_Client
             Assert.IsTrue(isSuccessfulResponse, errorMessage);
         }
 
-        public static void ValidateAssetTypeContent(string assetType, string errorMessage)
+        public static void ValidateAssetTypeContent(string assetType)
         {
             bool isAssetType = false;
 
@@ -32,7 +32,14 @@ namespace AdidasAPI.API_Client
                 isAssetType = true;
             }
 
-            Assert.IsTrue(isAssetType, errorMessage);
+            Assert.IsTrue(isAssetType, "Expected 'Asset Type' to be 'Image'");
+        }
+
+        public static void ValidateUrlForJPGImageExtention(string url)
+        {
+            bool isJpgImage = url.Contains("jpg");
+
+            Assert.IsTrue(isJpgImage, "Expected Url to contain image with .jpg extention!");
         }
 
         public static void ValidateAnalyticsNameExist(string analyticsName, string errorMessage)
