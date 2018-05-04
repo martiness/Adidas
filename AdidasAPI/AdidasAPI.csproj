@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API Client\Settings.cs" />
     <Compile Include="API Tests with Reporting\APITestsReportGenerator.cs" />
     <Compile Include="API Client\Client.cs" />
     <Compile Include="API Client\Models.cs" />

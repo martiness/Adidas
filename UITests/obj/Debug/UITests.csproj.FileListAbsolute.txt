@@ -29,3 +29,4 @@ C:\Adidas\Adidas\UITests\bin\Debug\System.Web.Razor.xml
 C:\Adidas\Adidas\UITests\bin\Debug\WebDriver.xml
 C:\Adidas\Adidas\UITests\obj\Debug\UITests.dll
 C:\Adidas\Adidas\UITests\obj\Debug\UITests.pdb
+C:\Adidas\Adidas\UITests\obj\Debug\UITests.csprojResolveAssemblyReference.cache

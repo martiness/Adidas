@@ -89,12 +89,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowsingTypes.cs" />
-    <Compile Include="UITestsReportGenerator.cs" />
-    <Compile Include="UITests.cs" />
+    <Compile Include="Keywords\Keywords.cs" />
+    <Compile Include="Test Base\TestBase.cs" />
+    <Compile Include="UI Tests With Cross Browsing\BrowsingTypes.cs" />
+    <Compile Include="UI Tests With Reporting\UITestsReportGenerator.cs" />
+    <Compile Include="UI Tests\UITests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UITestsXBrowsers.cs" />
-    <Compile Include="WebClient.cs" />
+    <Compile Include="UI Tests With Cross Browsing\UITestsXBrowsers.cs" />
+    <Compile Include="UI Tests With Cross Browsing\WebClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="license" />
