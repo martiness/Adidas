@@ -23,7 +23,7 @@ namespace AdidasAPI.API_Client
             Assert.IsTrue(isSuccessfulResponse, errorMessage);
         }
 
-        public static void ValidateAssetType(string assetType, string errorMessage)
+        public static void ValidateAssetTypeContent(string assetType, string errorMessage)
         {
             bool isAssetType = false;
 
@@ -33,6 +33,13 @@ namespace AdidasAPI.API_Client
             }
 
             Assert.IsTrue(isAssetType, errorMessage);
+        }
+
+        public static void ValidateAnalyticsNameExist(string analyticsName, string errorMessage)
+        {
+            bool hasAnaliticsName = (!string.IsNullOrEmpty(analyticsName));
+
+            Assert.IsTrue(hasAnaliticsName, errorMessage);
         }
 
     }

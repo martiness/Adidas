@@ -32,60 +32,25 @@ namespace AdidasAPI
         /// SLAs/requirements: Images should be accessible (no 404/401s)
         /// </summary>
         [Test]
-        public static void API_CheckForEmptyImagesTest()
+        public static void API_CheckForEmptyMediaImagesTest()
         {
             Client client = new Client();
             System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
             string result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             QuickType.Welcome data = QuickType.Welcome.FromJson(result);
 
-            
 
             foreach (var componentPresentation in data.ComponentPresentations)
             {
-                if (componentPresentation.Component?.ContentFields != null
-                    && componentPresentation.Component.ContentFields?.Items != null
-                )
+                if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
                 {
                     foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
                     {
-                        QuickType.BackgroundMedia backgroundMediaItems = item.BackgroundMedia;
-
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.AssetType))
-                        {
-                            Validation.ValidateAssetType(backgroundMediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
-                        }
-
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
-                        {
-                            string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
-                            Validation.ValidateResponse(desktopImageUrl, "Expected Desкtop Images to be accessible!");
-
-                            //TODO: Check For Content-Type: image/jpeg 
-                            //response.Result.Content.Headers.ContentType
-                            //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
-                        }
-
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
-                        {
-                            string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
-                            Validation.ValidateResponse(mobileImageUrl, "Expected Mobile Images to be accessible!");
-                        }
-
-
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
-                        {
-                            string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
-                            Validation.ValidateResponse(tabletImageUrl, "Expected Responce Images to be accessible!");
-                        }
-
-
-
                         QuickType.BackgroundMedia mediaItems = item.MediaItems;
 
                         if (!string.IsNullOrEmpty(mediaItems?.AssetType))
                         {
-                            Validation.ValidateAssetType(mediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
+                            Validation.ValidateAssetTypeContent(mediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
                         }
 
                         if (!string.IsNullOrEmpty(mediaItems?.DesktopImage?.Url))
@@ -117,7 +82,56 @@ namespace AdidasAPI
             }
         }
 
-        
+        [Test]
+        public static void API_CheckForEmptyBackgroundImagesTest()
+        {
+            Client client = new Client();
+            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
+            string result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            QuickType.Welcome data = QuickType.Welcome.FromJson(result);
+
+
+            foreach (var componentPresentation in data.ComponentPresentations)
+            {
+                if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
+                {
+                    foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
+                    {
+                        QuickType.BackgroundMedia backgroundMediaItems = item.BackgroundMedia;
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.AssetType))
+                        {
+                            Validation.ValidateAssetTypeContent(backgroundMediaItems.AssetType, "Expected 'Asset Type' to be 'Image'");
+                        }
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
+                        {
+                            string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
+                            Validation.ValidateResponse(desktopImageUrl, "Expected Desкtop Images to be accessible!");
+
+                            //TODO: Check For Content-Type: image/jpeg 
+                            //response.Result.Content.Headers.ContentType
+                            //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                        }
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
+                        {
+                            string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
+                            Validation.ValidateResponse(mobileImageUrl, "Expected Mobile Images to be accessible!");
+                        }
+
+
+                        if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
+                        {
+                            string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
+                            Validation.ValidateResponse(tabletImageUrl, "Expected Responce Images to be accessible!");
+                        }
+                    }
+
+                }
+            }
+        }
+
         /// <summary>
         /// Checks for analytics data.
         /// SLAs/requirements: Every component has at least analytics data “analytics_name” in it 
@@ -134,44 +148,25 @@ namespace AdidasAPI
 
             foreach (var componentPresentation in data.ComponentPresentations)
             {
-                if (
-                    componentPresentation.Component?.ContentFields != null
-                    && componentPresentation.Component.ContentFields?.Items != null
-                )
+                if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
                 {
                     foreach (var item in componentPresentation.Component.ContentFields.Items)
                     {
                         var suportingFields = item.SupportingFields;
-                        if (suportingFields != null)
+
+                        if (suportingFields?.SupportingFields?.StandardMetadata?.AnalyticsName != null)
                         {
-                            if (suportingFields.SupportingFields != null)
-                            {
-                                if (suportingFields.SupportingFields.StandardMetadata != null)
-                                {
-                                    if (suportingFields.SupportingFields.StandardMetadata.AnalyticsName != null)
-                                    {
-                                        bool hasAnaliticsName = (!string.IsNullOrEmpty(suportingFields.SupportingFields.StandardMetadata.AnalyticsName));
-                                        Assert.IsTrue(hasAnaliticsName,
-                                            "Expected component to have “analytics_name” in it, but it haven't!");
-                                        System.Diagnostics.Debug.WriteLine(hasAnaliticsName);
-                                    }
-                                }
-                            }
+                            string analyticsName = suportingFields.SupportingFields.StandardMetadata.AnalyticsName;
+
+                            Validation.ValidateAnalyticsNameExist(analyticsName, "Expected component to have 'Analytics Name' in it!");
                         }
+
                     }
                 }
             }
         }
 
 
-        /// <summary>
-        /// Checks for valid response, different from 401 and 404
-        /// </summary>
-        /// <param name="address"> Image address </param>
-        /// <returns></returns>
-        #region Helpers
 
-
-        #endregion Helpers
     }
 }
