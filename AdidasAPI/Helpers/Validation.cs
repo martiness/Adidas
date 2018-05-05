@@ -2,9 +2,9 @@
 using System;
 using System.Net.Http;
 
-namespace AdidasAPI.API_Client
+namespace AdidasAPI
 {
-    class Validation
+    public class Validation
     {
         public static bool IsLessThanASecond(long elapsedTicks)
         {
@@ -13,40 +13,38 @@ namespace AdidasAPI.API_Client
             return isLessThanSec;
         }
 
-        public static void ValidateResponseCode(string address, string errorMessage)
+        public static void ValidateResponseCode(string address)
         {
             HttpResponseMessage message = new Client(address).GetAsync("").GetAwaiter().GetResult();
 
-            bool isSuccessfulResponse = (int)message.StatusCode != 401 
-                                     && (int)message.StatusCode != 404;
+            bool isSuccessfulResponse = (int)message.StatusCode != ErrorMessages.errorMessageUnautorized
+                                     && (int)message.StatusCode != ErrorMessages.errorMessageNotFound;
 
-            Assert.IsTrue(isSuccessfulResponse, errorMessage);
+            Assert.IsTrue(isSuccessfulResponse, ErrorMessages.apiImageResponseFailedMessage);
         }
 
         public static void ValidateAssetTypeContent(string assetType)
         {
             bool isAssetType = false;
 
-            if (assetType == "Image")
+            if (assetType == Constants.apiImageTypeText)
             {
                 isAssetType = true;
             }
 
-            Assert.IsTrue(isAssetType, "Expected 'Asset Type' to be 'Image'");
+            Assert.IsTrue(isAssetType, ErrorMessages.apiAssetTypeFailedMessage);
         }
 
         public static void ValidateUrlForJPGImageExtention(string url)
         {
-            bool isJpgImage = url.Contains("jpg");
-
-            Assert.IsTrue(isJpgImage, "Expected Url to contain image with .jpg extention!");
+            bool isJpgImage = url.Contains(Constants.apiImageExtentionType);
+            Assert.IsTrue(isJpgImage, ErrorMessages.apiImageJpgExtentionFailedMessage);
         }
 
-        public static void ValidateAnalyticsNameExist(string analyticsName, string errorMessage)
+        public static void ValidateAnalyticsNameExist(string analyticsName)
         {
             bool hasAnaliticsName = (!string.IsNullOrEmpty(analyticsName));
-
-            Assert.IsTrue(hasAnaliticsName, errorMessage);
+            Assert.IsTrue(hasAnaliticsName, ErrorMessages.apiAnalyticsNameFailedMessage);
         }
 
     }

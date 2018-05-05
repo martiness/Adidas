@@ -1,62 +1,154 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using NUnit.Framework;
-using AdidasAPI.API_Client;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
 
-namespace AdidasAPI.API_Tests
+namespace AdidasAPI
 {
-    public partial class APITests
+    public partial class APITests : TestBase
     {
         [Test]
-        public static void API_CheckForEmptyBackgroundImagesTest()
+        public void API_CheckForEmptyBackgroundImagesTest()
         {
-            Client client = new Client();
-            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
-            string result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            QuickType.Welcome data = QuickType.Welcome.FromJson(result);
-
-
-            foreach (var componentPresentation in data.ComponentPresentations)
+            try
             {
-                if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
+                foreach (var componentPresentation in data.ComponentPresentations)
                 {
-                    foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
+                    if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
                     {
-                        QuickType.BackgroundMedia backgroundMediaItems = item.BackgroundMedia;
-
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.AssetType))
+                        foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
                         {
-                            Validation.ValidateAssetTypeContent(backgroundMediaItems.AssetType);
-                        }
+                            QuickType.BackgroundMedia backgroundMediaItems = item.BackgroundMedia;
 
-                        //TODO: Check For Content-Type: image/jpeg 
-                        //response.Result.Content.Headers.ContentType
-                        //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                            #region Verification for Is Asset Type an Image 
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.AssetType))
+                                {
+                                    Validation.ValidateAssetTypeContent(backgroundMediaItems.AssetType);
+                                }
+                                testReport.Pass(ErrorMessages.apiAssetTypePassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiAssetTypeFailedMessage);
+                                throw;
+                            }
+                            #endregion
 
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
-                        {
-                            string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
-                            Validation.ValidateResponseCode(desktopImageUrl, "Expected Desкtop Images to be accessible!");
-                            Validation.ValidateUrlForJPGImageExtention(desktopImageUrl);
-                        }
+                            #region  TODO: Check For Content-Type: image/jpeg 
+                            //response.Result.Content.Headers.ContentType
+                            //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                            #endregion
 
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
-                        {
-                            string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
-                            Validation.ValidateResponseCode(mobileImageUrl, "Expected Mobile Images to be accessible!");
-                            Validation.ValidateUrlForJPGImageExtention(mobileImageUrl);
-                        }
+                            #region Verification for Is Desktop Image has OK response and Is Desktop Image extention JPG
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
+                                {
+                                    string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
+                                    Validation.ValidateResponseCode(desktopImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                                throw;
+                            }
 
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.DesktopImage?.Url))
+                                {
+                                    string desktopImageUrl = backgroundMediaItems.DesktopImage.Url;
+                                    Validation.ValidateUrlForJPGImageExtention(desktopImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                                throw;
+                            }
+                            #endregion
 
-                        if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
-                        {
-                            string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
-                            Validation.ValidateResponseCode(tabletImageUrl, "Expected Responce Images to be accessible!");
-                            Validation.ValidateUrlForJPGImageExtention(tabletImageUrl);
+                            #region Verification for Is Mobile Image has OK response and Is Mobile Image extention JPG
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
+                                {
+                                    string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
+                                    Validation.ValidateResponseCode(mobileImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                                throw;
+                            }
+
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.MobileImage?.Url))
+                                {
+                                    string mobileImageUrl = backgroundMediaItems.MobileImage.Url;
+                                    Validation.ValidateUrlForJPGImageExtention(mobileImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                                throw;
+                            }
+                            #endregion
+
+                            #region Verification for Is Tablet Image has OK response and Is Tablet Image extention JPG
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
+                                {
+                                    string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
+                                    Validation.ValidateResponseCode(tabletImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                                throw;
+                            }
+
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(backgroundMediaItems?.TabletImage?.Url))
+                                {
+                                    string tabletImageUrl = backgroundMediaItems.TabletImage.Url;
+                                    Validation.ValidateUrlForJPGImageExtention(tabletImageUrl);
+                                }
+                                testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                            }
+                            catch (AssertionException)
+                            {
+                                testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                                throw;
+                            }
+                            #endregion
                         }
                     }
                 }
             }
+            catch (NotImplementedException ex)
+            {
+                testReport.Fail(ex.StackTrace);
+                throw;
+            }
+
         }
     }
 }

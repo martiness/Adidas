@@ -1,27 +1,46 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using NUnit.Framework;
-using AdidasAPI.API_Client;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
 
-namespace AdidasAPI.API_Tests
+namespace AdidasAPI
 {
-    public partial class APITests
+    public partial class APITests : TestBase
     {
         /// <summary>
         /// Checks for reponse time test.
         /// SLAs/requirements: Response time should be bellow 1s
         /// </summary>
         [Test]
-        public static void API_CheckForReponseTimeTest()
+        public void API_CheckForReponseTimeTest()
         {
-            Client client = new Client();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Keywords.apiPublicAddress);
-            stopwatch.Stop();
+            try
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Constants.apiPublicAddress);
+                stopwatch.Stop();
 
-            bool isLessThanSec = Validation.IsLessThanASecond(stopwatch.ElapsedMilliseconds);
-            Assert.IsTrue(isLessThanSec, "Expected API request response to be bellow 1 second, but it isn't");
+                try
+                {
+                    bool isLessThanSec = Validation.IsLessThanASecond(stopwatch.ElapsedMilliseconds);
+                    Assert.IsTrue(isLessThanSec);
+                    testReport.Pass(ErrorMessages.apiResponseErrorPassedMessage);
+                }
+                catch (AssertionException)
+                {
+                    testReport.Fail(ErrorMessages.apiResponseErrorFailedMessage);
+                    throw;
+                }
+            }
+            catch (NotImplementedException ex)
+            {
+                testReport.Fail(ex.StackTrace);
+                throw;
+            }
         }
     }
 }

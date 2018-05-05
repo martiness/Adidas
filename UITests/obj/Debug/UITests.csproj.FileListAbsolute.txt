@@ -62,3 +62,4 @@ C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.csproj.C
 C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.csproj.CopyComplete
 C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.dll
 C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.pdb
+C:\Users\Freeware Sys\Documents\GitHub\Adidas\UITests\obj\Debug\UITests.csprojResolveAssemblyReference.cache

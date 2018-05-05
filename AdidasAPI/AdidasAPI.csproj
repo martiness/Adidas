@@ -87,9 +87,10 @@
     <Compile Include="API Tests\AccessibleBackgroundImagesTest.cs" />
     <Compile Include="API Tests\AccessibleMediaImagesTest.cs" />
     <Compile Include="API Tests\AnalyticsDataTest.cs" />
-    <Compile Include="Helpers\Keywords.cs" />
+    <Compile Include="Helpers\ErrorMessages.cs" />
+    <Compile Include="Helpers\TestBase.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Validation.cs" />
-    <Compile Include="API Tests with Reporting\APITestsReportGenerator.cs" />
     <Compile Include="API Client\Client.cs" />
     <Compile Include="API Client\Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +107,9 @@
   <ItemGroup>
     <Content Include="API Client\Response.txt" />
     <Content Include="Settings\extent-config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
