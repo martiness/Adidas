@@ -8,21 +8,15 @@ using AventStack.ExtentReports.Reporter.Configuration;
 
 namespace AdidasAPI
 {
-    public partial class APITests
+    public partial class APITests : TestBase
     {
         /// <summary>
         /// Checks for empty images test.
         /// SLAs/requirements: Images should be accessible (no 404/401s)
         /// </summary>
         [Test]
-        public static void API_CheckForEmptyMediaImagesTest()
+        public void API_CheckForEmptyMediaImagesTest()
         {
-            Client client = new Client();
-            System.Threading.Tasks.Task<HttpResponseMessage> response = client.GetAsync(Constants.apiPublicAddress);
-            string result = response.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            QuickType.Welcome data = QuickType.Welcome.FromJson(result);
-
-
             foreach (var componentPresentation in data.ComponentPresentations)
             {
                 if (componentPresentation.Component?.ContentFields != null && componentPresentation.Component.ContentFields?.Items != null)
@@ -30,47 +24,123 @@ namespace AdidasAPI
                     foreach (QuickType.Item item in componentPresentation.Component.ContentFields.Items)
                     {
                         QuickType.BackgroundMedia mediaItems = item.MediaItems;
-                        
-                        // Verification for Is Asset Type an Image 
-                        if (!string.IsNullOrEmpty(mediaItems?.AssetType))
-                        {
-                            Validation.ValidateAssetTypeContent(mediaItems.AssetType);
-                        }
 
-                        //TODO: Check For Content-Type: image/jpeg 
+                        #region Verification for Is Asset Type an Image 
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(mediaItems?.AssetType))
+                            {
+                                Validation.ValidateAssetTypeContent(mediaItems.AssetType);
+                            }
+                            testReport.Pass(ErrorMessages.apiAssetTypePassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiAssetTypeFailedMessage);
+                            throw;
+                        }
+                        #endregion
+
+                        #region  TODO: Check For Content-Type: image/jpeg 
                         //response.Result.Content.Headers.ContentType
                         //var url = client.GetAsync(desktopImageUrl).Result.Content.Headers.ContentType;
+                        #endregion
 
-                        // Verification for 
-                        // Is Desktop Image has OK response
-                        // Is Desktop Image extention JPG
-                        if (!string.IsNullOrEmpty(mediaItems?.DesktopImage?.Url))
+                        #region Verification for Is Desktop Image has OK response and Is Desktop Image extention JPG
+                        try
                         {
-                            string desktopImageUrl = mediaItems.DesktopImage.Url;
-                            Validation.ValidateResponseCode(desktopImageUrl);
-                            Validation.ValidateUrlForJPGImageExtention(desktopImageUrl);
+                            if (!string.IsNullOrEmpty(mediaItems?.DesktopImage?.Url))
+                            {
+                                string desktopImageUrl = mediaItems.DesktopImage.Url;
+                                Validation.ValidateResponseCode(desktopImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                            throw;
                         }
 
-                        // Verification for 
-                        // Is Mobile Image has OK response
-                        // Is Mobile Image extention JPG
-                        if (!string.IsNullOrEmpty(mediaItems?.MobileImage?.Url))
+                        try
                         {
-                            string mobileImageUrl = mediaItems.MobileImage.Url;
-                            Validation.ValidateResponseCode(mobileImageUrl);
-                            Validation.ValidateUrlForJPGImageExtention(mobileImageUrl);
+                            if (!string.IsNullOrEmpty(mediaItems?.DesktopImage?.Url))
+                            {
+                                string desktopImageUrl = mediaItems.DesktopImage.Url;
+                                Validation.ValidateUrlForJPGImageExtention(desktopImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                            throw;
+                        }
+                        #endregion
+
+                        #region Verification for Is Mobile Image has OK response and Is Mobile Image extention JPG
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(mediaItems?.MobileImage?.Url))
+                            {
+                                string mobileImageUrl = mediaItems.MobileImage.Url;
+                                Validation.ValidateResponseCode(mobileImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                            throw;
                         }
 
-                        // Verification for 
-                        // Is Tablet Image has OK response
-                        // Is Tablet Image extention JPG
-                        if (!string.IsNullOrEmpty(mediaItems?.TabletImage?.Url))
+                        try
                         {
-                            string tabletImageUrl = mediaItems.TabletImage.Url;
-                            Validation.ValidateResponseCode(tabletImageUrl);
-                            Validation.ValidateUrlForJPGImageExtention(tabletImageUrl);
+                            if (!string.IsNullOrEmpty(mediaItems?.MobileImage?.Url))
+                            {
+                                string mobileImageUrl = mediaItems.MobileImage.Url;
+                                Validation.ValidateUrlForJPGImageExtention(mobileImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                            throw;
+                        }
+                        #endregion
+
+                        #region Verification for Is Tablet Image has OK response and Is Tablet Image extention JPG
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(mediaItems?.TabletImage?.Url))
+                            {
+                                string tabletImageUrl = mediaItems.TabletImage.Url;
+                                Validation.ValidateResponseCode(tabletImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageResponsePassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageResponseFailedMessage);
+                            throw;
                         }
 
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(mediaItems?.TabletImage?.Url))
+                            {
+                                string tabletImageUrl = mediaItems.TabletImage.Url;
+                                Validation.ValidateUrlForJPGImageExtention(tabletImageUrl);
+                            }
+                            testReport.Pass(ErrorMessages.apiImageJpgExtentionPassedMessage);
+                        }
+                        catch (AssertionException)
+                        {
+                            testReport.Fail(ErrorMessages.apiImageJpgExtentionFailedMessage);
+                            throw;
+                        }
+                        #endregion
                     }
 
                 }
